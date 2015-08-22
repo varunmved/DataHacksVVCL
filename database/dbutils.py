@@ -80,15 +80,15 @@ class PostgresConn:
         else:
           first = False
         where += (ucol + ' = %s ')
-      where += ')'
-
-    columns = colums[0:-1]
+    
+    columns = columns[0:-1]
+    columns += ')'
     params = params[0:-1]
 
     # the query
     query = "INSERT INTO " + table + " " + columns + " SELECT "\
       + params + where
-
+    
     # insert all the given data
     curs = self.__conn.cursor()
     for row in data:

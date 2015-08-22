@@ -3,7 +3,7 @@ CREATE EXTENSION postgis;
 CREATE EXTENSION postgis_topology;
 CREATE EXTENSION postgis_tiger_geocoder;
 
-create table sf_evictions as (
+create table sf_evictions (
     id                      serial primary key,
     eviction_id             varchar(16),
     address                 varchar(256),
@@ -11,7 +11,7 @@ create table sf_evictions as (
     filedate                date,
     district                int,
     neighborhood            varchar(256),
-    block_number            int
+    block_number            int,
     street_name             varchar(256),
     longitude               float,
     latitude                float,
@@ -35,9 +35,9 @@ create table sf_evictions as (
     development             int
 );
 create index sf_evictions_location on sf_evictions(latitude, longitude);
-create index sf_evictions on sf_evictions(filedate);
+create index sf_evictions_filedate on sf_evictions(filedate);
 
-create table sf_businesses as (
+create table sf_businesses (
     id                      serial primary key,
     location_end_date       date,
     business_name           varchar(512),
@@ -52,4 +52,4 @@ create table sf_businesses as (
     longitude               float
 );
 create index sf_business_location on sf_businesses(latitude, longitude);
-create index sf_business_start_date on sf_businesses(local_start_date);
+create index sf_business_start_date on sf_businesses(location_start_date);
