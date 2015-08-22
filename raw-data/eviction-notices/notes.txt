@@ -1,0 +1,11 @@
+=== Data Cleanup
+    all false -> 0, all true -> 1
+    remove all SF zip codes < 10000 (216 rows)
+    remove entries with bad latlong values (79 rows)
+    entries with no zipcode (802 rows)
+    no address (7 rows)
+    no neighborhood / invalid GPS (446 rows)
+    delete city and state columns
+
+    Removed "Block Of"
+    Removed repeated whitespace (\s)\s -> \1
