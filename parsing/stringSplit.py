@@ -1,0 +1,12 @@
+str = "343 STATE ST ROCHESTER, NY 14650 (43.161256430000037, -77.619328871999983)"
+strIn = row[16]
+str2 = strIn.split("(")
+add = str2[0]
+addLen = len(add)
+add = add[0:addLen-1]
+str3 = str2[1].split(",")
+lat = str3[0]
+longt = str3[1]
+longt = longt.strip()
+longtLen = len(longt)
+longt = longt[0:longtLen-1]
