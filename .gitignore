@@ -1,2 +1,7 @@
 venv/
 all-data/
+*.pyc
+*.swp
+.Rhistory
+.Rdata
+*.~lock*

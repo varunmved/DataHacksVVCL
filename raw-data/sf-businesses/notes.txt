@@ -1,0 +1,7 @@
+=== Data Cleanup
+    removed entries with no address (370 rows)
+    remove non california businesses (3411 rows)
+    removed non san francisco businesses (20173 rows)
+    removed entries with no gps (124 rows)
+
+    replace n.a. with ""
