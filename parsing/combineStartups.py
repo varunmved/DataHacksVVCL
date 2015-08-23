@@ -1,29 +1,34 @@
 import csv
-import pdb
+import re
+import datetime
 
-stups = open("dataSets/sfStartupsAllCaps.txt", "r")
+stups = open("dataSets/updatedSFStartups.csv", "r")
 allbus = open("dataSets/cleaned-sf-businesses.csv", "r")
 outfile = open("test.csv", 'w')
-i = 0
-
+matches = 0
 
 busReader = csv.DictReader(allbus)
+all_companies = []
+for row in busReader:
+    all_companies.append(row)
+
+all_startups = []
+reader = csv.DictReader(stups)
+for row in reader:
+    all_statups.append(row)
+
 a = csv.writer(outfile, delimiter=',')
-for rowStups in stups:
+for startup in all_startups:
     startup_name = rowStups.strip()
-    #print startup_name
-    if startup_name == "TWILIO":
-        print("yup!")
-    for row in busReader:
-        if  "TWILIO" in row["business_name"]:
-            print ("yee!")
+    for row in all_companies:
         #print(rowStups)
         #print(row["business_name"])
-        if str(startup_name) in (row["business_name"]).strip():
-            i +=1
+        if re.match("^" + startup_name + "[^a-zA-Z0-9]", row["business_name"]):
+        # if str(startup_name) in (row["business_name"]).strip():
+            matches += 1
             print("%s -> %s" % (startup_name, row["business_name"]))
             # outText = [row[2],row[9],row[1], row[3]]
             #a.writerows(outText)
 
-print(i)
+print("matches: %s" % matches)
 outfile.close()
